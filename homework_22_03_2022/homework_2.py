@@ -1,24 +1,28 @@
+print("Enter parameters: ")
+
+print('''Examples of input:
+1, 5, -3, 'abc', [12, 56, 'cad']
+or 
+2, 4, ‘abc’, param_1=2
+or leave it blank
+''')
+
+args = input()
+
+
 def my_undefinite_number_of_param_func(*args):
-    numbers = 0
+    items_sum = 0
     items_from_tuple = args
-    if len(args) == 0:
+    if len(items_from_tuple) == 0:
         return 0
     else:
-        print(len(args))
         for item in items_from_tuple:
-            try:
-                number = int(item)
-                numbers = numbers + number
-            except ValueError:
-                pass
-        return numbers
+            if isinstance(item, int):
+                items_sum = items_sum + item
+        return items_sum
 
-
-args = input("Please enter the parameters: ")
 
 print(my_undefinite_number_of_param_func(args))
-print(my_undefinite_number_of_param_func(1, 5, -3, 'abc', [12, 56, 'cad']))
-print(my_undefinite_number_of_param_func())
 
 
 def number_sums(first_number):
@@ -27,10 +31,10 @@ def number_sums(first_number):
     total_sum = 0
     recursive_sum = 0
 
-    def recursiveSum(first_number):
+    def recursive_sum(first_number):
         if first_number <= 1:
             return first_number
-        return first_number + recursiveSum(first_number - 1)
+        return first_number + recursive_sum(first_number - 1)
 
     if first_number <= 1:
         return first_number
@@ -45,9 +49,8 @@ def number_sums(first_number):
 
 
 def is_the_number_whole(second_number):
-    if second_number.isdigit():
-        if int(second_number) - float(second_number) == 0:
-            print(f"The number you have entered, number {second_number}, is a whole number.")
+    if int(second_number) - float(second_number) == 0:
+        print(f"The number you have entered, number {second_number}, is a whole number.")
     else:
         print(0)
 
