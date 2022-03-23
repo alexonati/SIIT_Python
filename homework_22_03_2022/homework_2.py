@@ -5,7 +5,7 @@ def my_undefinite_number_of_param_func(*args):
         return 0
     else:
         for item in items_from_tuple:
-            if isinstance(item, int):
+            if isinstance(item,int):
                 items_sum = items_sum + item
         return items_sum
 
@@ -21,17 +21,16 @@ or leave it blank
 
 print(my_undefinite_number_of_param_func(args))
 
-
 def number_sums(first_number):
     total_even = 0
     total_odd = 0
     total_sum = 0
     recursive_sum = 0
 
-    def recursive_sum(first_number):
+    def recursiveSum(first_number):
         if first_number <= 1:
             return first_number
-        return first_number + recursive_sum(first_number - 1)
+        return first_number + recursiveSum(first_number - 1)
 
     if first_number <= 1:
         return first_number
