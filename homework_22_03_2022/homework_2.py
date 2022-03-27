@@ -9,20 +9,25 @@ or leave it blank
 
 args = input()
 
+tuple_args = tuple(x for x in args.split(","))
+
 
 def my_undefinite_number_of_param_func(*args):
     items_sum = 0
-    items_from_tuple = args
+    items_from_tuple = args[0]
     if len(items_from_tuple) == 0:
         return 0
     else:
         for item in items_from_tuple:
-            if isinstance(item, int):
-                items_sum = items_sum + item
+            try:
+                number = int(item)
+                items_sum = items_sum + number
+            except ValueError:
+                continue
         return items_sum
 
 
-print(my_undefinite_number_of_param_func(args))
+print(my_undefinite_number_of_param_func(tuple_args))
 
 
 def number_sums(first_number):
@@ -49,9 +54,10 @@ def number_sums(first_number):
 
 
 def is_the_number_whole(second_number):
-    if int(second_number) - float(second_number) == 0:
+    try:
+        second_number = int(second_number)
         print(f"The number you have entered, number {second_number}, is a whole number.")
-    else:
+    except ValueError:
         print(0)
 
 
@@ -66,13 +72,7 @@ while True:
 print(
     f"The sums of all numbers between [0, n], of all even numbers and all odd numbers are: {number_sums(first_number)}")
 
-while True:
-    second_number = input(" Please Enter the number to check for wholeness: ")
-    try:
-        second_number = int(second_number)
-    except ValueError:
-        continue
-    else:
-        break
+
+second_number = input(" Please Enter the number to check for wholeness: ")
 
 is_the_number_whole(second_number)
