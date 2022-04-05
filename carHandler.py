@@ -53,6 +53,9 @@ with open(os.path.join('output_data', 'audi_cars.json'), 'w') as json_file:
 with open(os.path.join('output_data', 'volvo_cars.json'), 'w') as json_file:
     json.dump(volvo_cars, json_file, indent=4)
 
-# an improvement would be to find a way to have the .json files names generated dynamically based on the name of the variable that holds them - as far as I could research this cannot be done easily
+# an improvement would be to find a way to have the .json files names generated
+# dynamically based on the name of the variable that holds them in the following list
+# fx. to have a for loop for the items in the list where a path variable changes depending on the name of the item
+# as far as I could research this cannot be done easily
 files_to_create = [slow_cars, fast_cars, sport_cars, cheap_cars, medium_priced_cars, expensive_cars, audi_cars,
                    volvo_cars]
