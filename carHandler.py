@@ -1,7 +1,7 @@
 import csv
+import json
 import os
 from uuid import uuid4
-import json
 
 with open('input.csv', 'r') as csv_file:
     rows = csv.reader(csv_file, delimiter=';')
@@ -30,18 +30,29 @@ expensive_cars = [car for car in cars if int(car['PRICE']) >= 1000]
 audi_cars = [car for car in cars if car['MAKE'] == 'Audi']
 volvo_cars = [car for car in cars if car['MAKE'] == 'Volvo']
 
-files_to_create = [slow_cars, fast_cars, sport_cars, cheap_cars, medium_priced_cars, expensive_cars, audi_cars, volvo_cars]
-
-path = "/output_data"
+path = "./output_data"
 path_exists = os.path.exists(path)
-path_slash = '/'
 
 if not path_exists:
     os.makedirs(path)
-else:
-    for file in files_to_create:
-        file_name = str(file.__str__())+'.json'
-        path_final = path + path_slash
-        path_to_file = os.path.join(path_final, file_name)
-        with open(path_to_file, 'w') as json_file:
-            json.dump(file, json_file)
+
+with open(os.path.join('output_data', 'slow_cars.json'), 'w') as json_file:
+    json.dump(slow_cars, json_file, indent=4)
+with open(os.path.join('output_data', 'fast_cars.json'), 'w') as json_file:
+    json.dump(fast_cars, json_file, indent=4)
+with open(os.path.join('output_data', 'sport_cars.json'), 'w') as json_file:
+    json.dump(sport_cars, json_file, indent=4)
+with open(os.path.join('output_data', 'cheap_cars.json'), 'w') as json_file:
+    json.dump(cheap_cars, json_file, indent=4)
+with open(os.path.join('output_data', 'medium_cars.json'), 'w') as json_file:
+    json.dump(medium_priced_cars, json_file, indent=4)
+with open(os.path.join('output_data', 'expensive_cars.json'), 'w') as json_file:
+    json.dump(expensive_cars, json_file, indent=4)
+with open(os.path.join('output_data', 'audi_cars.json'), 'w') as json_file:
+    json.dump(audi_cars, json_file, indent=4)
+with open(os.path.join('output_data', 'volvo_cars.json'), 'w') as json_file:
+    json.dump(volvo_cars, json_file, indent=4)
+
+# an improvement would be to find a way to have the .json files names generated dynamically based on the name of the variable that holds them - as far as I could research this cannot be done easily
+files_to_create = [slow_cars, fast_cars, sport_cars, cheap_cars, medium_priced_cars, expensive_cars, audi_cars,
+                   volvo_cars]
